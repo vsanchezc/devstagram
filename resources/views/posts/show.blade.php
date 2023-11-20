@@ -23,7 +23,7 @@
                             <a href="{{ route('posts.index', $post->user->username) }}" class="font-bold flex flex-wrap gap-2">
                                 {{ ucfirst($post->user->name) }}
                             </a>
-                            
+                            <p class="font-medium">{{ ucfirst($post->titulo) }}</p>
                             <p class="font-normal">{{ ucfirst($post->descripcion) }}</p>
                         </div>
                     </div>
