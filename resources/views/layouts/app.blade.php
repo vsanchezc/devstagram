@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        @stack('tagifyStyle')
+
         @stack('styles')
 
         <title>Devstagram - @yield('titulo')</title>
@@ -14,7 +16,6 @@
         @vite('resources/js/app.js')
 
         @livewireStyles
-
         <script>
             // if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             //     document.documentElement.classList.add('dark');
@@ -163,8 +164,10 @@
                 @yield('contenido')
             </div>
         </div>
+        @stack('tagifyScript')
         @stack('scriptImgPerfil')
         @stack('scriptConteoCifras')
+        @stack('tagifyJs')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
         @livewireScripts
     </body>

@@ -21,7 +21,7 @@ class PostController extends Controller
 
         return view('dashboard', [
             'user' => $user,
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 
@@ -35,7 +35,7 @@ class PostController extends Controller
         $this->validate($request, [
             'titulo' => 'required|max:255',
             'descripcion' => 'required|max:300',
-            'imagen' => 'required'
+            'imagen' => 'required',
         ]);
 
         # Primera forma de almacenar
@@ -59,7 +59,8 @@ class PostController extends Controller
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
             'imagen' => $request->imagen,
-            'user_id' => auth()->user()->id
+            'user_id' => auth()->user()->id,
+            'tags' => $request->tags,
         ]);
 
         return redirect()->route('posts.index', auth()->user()->username);
@@ -67,9 +68,13 @@ class PostController extends Controller
 
     public function show(User $user, Post $post)
     {
+        
+        $postTags = json_decode($post->tags, true);
+        
         return view('posts.show', [
             'user' => $user,
-            'post' => $post
+            'post' => $post,
+            'tags' => $postTags,
         ]);
     }
 

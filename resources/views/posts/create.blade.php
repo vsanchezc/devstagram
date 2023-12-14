@@ -4,12 +4,21 @@
     Crea una nueva publicación
 @endsection
 
+@push('tagifyStyle')
+    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+@endpush
+
+@push('tagifyScript')
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+@endpush
+
 @push('styles')
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 @endpush
 
 @push('scriptConteoCifras')
     <script type="text/javascript">
+        // Conteo letras
         const descripcion = document.querySelector('#descripcion');
         const conteo = document.querySelector('#conteo');
 
@@ -19,6 +28,26 @@
             const longitudAct = target.value.length;
             conteo.innerHTML = `${longitudAct}/${longitudMax}`;
         });
+    </script>
+@endpush
+
+@push('tagifyJs')
+    <script type="text/javascript">
+        // Input tags
+        const myTagify = function () {
+            // tagify
+            const input_tags = document.querySelectorAll("input.tagify");
+
+            if ( input_tags != null) {
+                for( let i = 0; i < input_tags.length; i++)
+                {
+                    new Tagify(input_tags[i]);
+                }
+            }
+        }
+
+        // Launch Function
+        myTagify();
     </script>
 @endpush
 
@@ -72,6 +101,16 @@
                     </button>
                 </div>
             @enderror
+
+            <div class="mb-6">
+                <label for="tags" class="inline-block mb-2">Tags</label>
+                <input 
+                    type="text" 
+                    name="tags" 
+                    id="tags" 
+                    class="tagify w-full leading-5 relative text-sm py-2 px-4 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600"
+                >
+            </div>
 
             <textarea 
                 id="descripcion"

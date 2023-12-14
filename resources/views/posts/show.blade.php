@@ -45,6 +45,21 @@
                     {{ $post->created_at->diffForHumans() }}
                 </p>
 
+                <div>
+                    @if ($tags)
+                        @foreach ($tags as $tag)
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                <span>#</span>
+                                {{ $tag['value'] }}
+                            </a>
+                        @endforeach
+                    @else
+                        <p class="text-sm text-gray-500 mt-2">
+                            {{ __('No hay etiquetas') }}
+                        </p>
+                    @endif
+                </div>
+
                 <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
                 <div class="bg-white overflow-y-scroll flex-1">
                     @if ($post->comentarios->count())
