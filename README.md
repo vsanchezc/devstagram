@@ -1,3 +1,25 @@
+Instalar: 
+
+1- git clone https://github.com/vsanchezc/devstagram.git
+
+2- cd devstagram
+
+3- composer install
+
+4- npm install
+
+5- configurar variables en un archivo .env
+
+6- php artisan key:generate
+
+7- php artisan migrate
+
+Ejecutar el proyecto en 2 consolas diferentes en paralelo:
+
+- php artisan serve
+
+- npm run dev 
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
